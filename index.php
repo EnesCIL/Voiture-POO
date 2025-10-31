@@ -4,12 +4,14 @@ class Voiture{
     private int $_modele;
     private int $_nbPortes;
     private int $_vitesseActuelle;
+    private bool $_statut;
 
-    public function  __construct($marque, $modele, $nbPortes ){
+    public function  __construct($marque, $modele, $nbPortes){
         $this->_marque = $marque;
         $this->_modele = $modele;
         $this->_nbPortes = $nbPortes;
-        $this->_vitesseActuelle = false;
+        $this->_vitesseActuelle = 0;
+        $this->_statut = false;
 // booleen statut 0 
     }
     
@@ -40,9 +42,10 @@ class Voiture{
 
     public function demarrer(){
     //  si 0 je peux demarrer voiture statut 1
-    if($this->_vitesseActuelle == false /*0*/){
-        $this->_vitesseActuelle = true /*1*/;
-        return "Le véhicule $this->_marque $this->_modele démarre";
+    if($this->_statut == false /*0*/){
+        $this->_statut = true /*1*/;
+        $this->_vitesseActuelle == 0;
+        return "Le véhicule $this->_marque $this->_modele  démarre";
     }else{
         return "Le véhicule $this->_marque $this->_modele est déjà démarée";
     }
@@ -52,7 +55,14 @@ class Voiture{
         
     }
     public function stopper(){
-        
+        // demarrer si demmarer on la stop on change son statut
+           if ($this->_statut == false) {
+            $this->_vitesseActuelle == 0;
+        return "Le véhicule $this->_marque $this->_modele est stoppé <br>";
+    } 
+    else {
+        return  "la vitesse est de $this->_vitesseActuelle km/h. Elle doit être à 0 pour pouvoir s'arrêter<br>";
+    }
     }
 
 
@@ -65,8 +75,9 @@ class Voiture{
     }
     
 }
-$voiture = new Voiture("Peugot", 408, 6 );
-echo $voiture->demarrer();
+$voiture = new Voiture("Peugot", 408, 2, 2 );
+echo $voiture->demarrer(2);
+
 
 
 
