@@ -45,14 +45,19 @@ class Voiture{
     if($this->_statut == false /*0*/){
         $this->_statut = true /*1*/;
         $this->_vitesseActuelle == 0;
-        return "Le véhicule $this->_marque $this->_modele  démarre";
+        return "Le véhicule $this->_marque $this->_modele  démarre <br>";
     }else{
-        return "Le véhicule $this->_marque $this->_modele est déjà démarée";
+        return "Le véhicule $this->_marque $this->_modele est déjà démarée <br>";
     }
 
     }
-    public function accelerer(){
-        
+    public function accelerer($vitesse){
+        if( $this->_vitesseActuelle > 0){
+            $this->_vitesseActuelle += $vitesse;
+            return "Le véhicule  $this->_marque $this->_modele accelere à  $this->_vitesseActuelle km/h <br>";
+        }else{
+            return "Le véhicule  $this->_marque $this->_modele veut accelerer à $vitesse km/h. Mais pour accelerer il faut que le véhicule soit demarrer <br> ";
+        }
     }
     public function stopper(){
         // demarrer si demmarer on la stop on change son statut
