@@ -1,9 +1,9 @@
 <?php
 class Voiture{
     private string $_marque;
-    private string $_modele;
-    private string $_nbPortes;
-    private string $_vitesseActuelle;
+    private int $_modele;
+    private int $_nbPortes;
+    private int $_vitesseActuelle;
 
     public function  __construct($marque, $modele, $nbPortes ){
         $this->_marque = $marque;
@@ -34,11 +34,19 @@ class Voiture{
     return $this->_vitesseActuelle;
     }
     public function setVitesseActuelle($vitesseActuelle){
-        $this->_vitesseActuelle = 0;
+        $this->_vitesseActuelle ;
     }
-    function demarrer()
 
+    public function demarrer(){
+     
 
+    }
+    public function accelerer(){
+        
+    }
+    public function stopper(){
+        
+    }
 
 
 
@@ -46,14 +54,12 @@ class Voiture{
     function __toString()
     {
          
-         return $this->_marque.' '.$this->_modèle.' '.$this->_nbPortes.' '.$this->_vitesseActuelle;
+         return $this->_marque.' '.$this->_modele.' '.$this->_nbPortes;
     }
     
-
-
 }
-$voiture = new Voiture("Peugot","408", "5","r","fdf" );
-echo $voiture;
+$voiture = new Voiture("Peugot", 408, 5 );
+echo $voiture->demarrer();
 
 
 
