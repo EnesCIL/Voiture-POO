@@ -1,7 +1,7 @@
 <?php
 class Voiture{
     private string $_marque;
-    private int $_modele;
+    private string $_modele;
     private int $_nbPortes;
     private int $_vitesseActuelle;
     private bool $_statut;
@@ -42,9 +42,8 @@ class Voiture{
 
     public function demarrer(){
     //  si 0 je peux demarrer voiture statut 1
-    if($this->_statut == false /*0*/){
+    if($this->_statut == false/*0*/){
         $this->_statut = true /*1*/;
-        $this->_vitesseActuelle == 0;
         return "Le véhicule $this->_marque $this->_modele  démarre <br>";
     }else{
         return "Le véhicule $this->_marque $this->_modele est déjà démarée <br>";
@@ -52,7 +51,7 @@ class Voiture{
 
     }
     public function accelerer($vitesse){
-        if( $this->_vitesseActuelle > 0){
+        if( $this->_statut == 0){
             $this->_vitesseActuelle += $vitesse;
             return "Le véhicule  $this->_marque $this->_modele accelere à  $this->_vitesseActuelle km/h <br>";
         }else{
@@ -62,8 +61,9 @@ class Voiture{
     public function stopper(){
         // demarrer si demmarer on la stop on change son statut
            if ($this->_statut == false) {
-            $this->_vitesseActuelle == 0;
+            $this->_vitesseActuelle = 0;
         return "Le véhicule $this->_marque $this->_modele est stoppé <br>";
+                
     } 
     else {
         return  "la vitesse est de $this->_vitesseActuelle km/h. Elle doit être à 0 pour pouvoir s'arrêter<br>";
@@ -80,11 +80,16 @@ class Voiture{
     }
     
 }
-$voiture = new Voiture("Peugot", 408, 2, 2 );
-echo $voiture->demarrer(2);
+$v1 = new Voiture("Peugot", "408", 5);
+$v2 = new Voiture("Peugot", "C4", 3);
 
-
-
-
-
+echo $v1->demarrer();
+echo $v1->accelerer(10);
+echo $v1->accelerer(100);
+echo $v1->accelerer(10);
+echo $v1->getVitesseActuelle();
+echo $v1->accelerer(10);
+echo $v1->getVitesseActuelle();
+echo $v2->accelerer(10);
+echo $v2->accelerer(10);
 ?>
