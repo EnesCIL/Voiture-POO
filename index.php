@@ -9,19 +9,20 @@ class Voiture{
         $this->_marque = $marque;
         $this->_modele = $modele;
         $this->_nbPortes = $nbPortes;
-        $this->_vitesseActuelle = 0;
-
+        $this->_vitesseActuelle = false;
+// booleen statut 0 
     }
+    
     public function getMarque(){
     return $this->_marque;
     }
     public function setMarque($marque){
         $this->_marque = $marque;
     }
-    public function getModèle(){
+    public function getModele(){
     return $this->_modele;
     }
-    public function setModèle($modele){
+    public function setModele($modele){
         $this->_modele = $modele;
     }
     public function getNbPortes(){
@@ -38,7 +39,13 @@ class Voiture{
     }
 
     public function demarrer(){
-     
+    //  si 0 je peux demarrer voiture statut 1
+    if($this->_vitesseActuelle == false /*0*/){
+        $this->_vitesseActuelle = true /*1*/;
+        return "Le véhicule $this->_marque $this->_modele démarre";
+    }else{
+        return "Le véhicule $this->_marque $this->_modele est déjà démarée";
+    }
 
     }
     public function accelerer(){
@@ -58,7 +65,7 @@ class Voiture{
     }
     
 }
-$voiture = new Voiture("Peugot", 408, 5 );
+$voiture = new Voiture("Peugot", 408, 6 );
 echo $voiture->demarrer();
 
 
