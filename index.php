@@ -51,7 +51,7 @@ class Voiture{
 
     }
     public function accelerer($vitesse){
-        if( $this->_statut == 0){
+        if( $this->_statut == true){
             $this->_vitesseActuelle += $vitesse;
             return "Le véhicule  $this->_marque $this->_modele accelere à  $this->_vitesseActuelle km/h <br>";
         }else{
@@ -60,7 +60,7 @@ class Voiture{
     }
     public function stopper(){
         // demarrer si demmarer on la stop on change son statut
-           if ($this->_statut == false) {
+           if ($this->_statut == true) {
             $this->_vitesseActuelle = 0;
         return "Le véhicule $this->_marque $this->_modele est stoppé <br>";
                 
@@ -84,7 +84,9 @@ $v1 = new Voiture("Peugot", "408", 5);
 $v2 = new Voiture("Peugot", "C4", 3);
 
 echo $v1->demarrer();
+var_dump($v1);
 echo $v1->accelerer(10);
+var_dump($v1);
 echo $v1->accelerer(100);
 echo $v1->accelerer(10);
 echo $v1->getVitesseActuelle();
